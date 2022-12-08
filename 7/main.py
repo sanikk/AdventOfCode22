@@ -28,7 +28,6 @@ def main():
 
 def filecrawler(data: list, dirname: str, laskuri: int, summa: int, lista, needed_size: int):
     koko = 0
-    sisaltaa_hakemistot = []
     while laskuri < len(data):
         rivi = data[laskuri]
         laskuri += 1
@@ -50,9 +49,7 @@ def filecrawler(data: list, dirname: str, laskuri: int, summa: int, lista, neede
                     laskuri = rivi
         else:
             osat = rivi.split()
-            if osat[0] == "dir":
-                sisaltaa_hakemistot.append(osat[1])
-            else:
+            if osat[0] != "dir":
                 koko += int(osat[0])
     if dirname != "/":
         if koko > needed_size:
